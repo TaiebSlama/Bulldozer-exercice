@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:exercice/presentation/features/offeredShifts/offered_shifts_window.dart';
 import 'package:flutter/material.dart';
 import 'package:koin/koin.dart';
@@ -12,7 +13,15 @@ void main() async {
     app.module(modules);
   });
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(application);
+  await EasyLocalization.ensureInitialized();
+  runApp(
+    EasyLocalization(
+        supportedLocales: const [Locale('en', ''), Locale('fr', '')],
+        path: 'assets/translations',
+        // <-- change the path of the translation files
+        fallbackLocale: const Locale('en', ''),
+        child: application),
+  );
 }
 
 class ExerciseApp extends StatelessWidget {
@@ -27,6 +36,9 @@ class ExerciseApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
         navigatorKey: navigatorKey,
         home: OfferedShiftsWindow.instance.specifyUseCase());
   }

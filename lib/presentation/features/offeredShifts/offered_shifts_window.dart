@@ -5,7 +5,7 @@ import 'package:exercice/presentation/features/offeredShifts/offered_shifts_view
 import 'package:exercice/presentation/features/offeredShifts/offered_shifts_view_model.dart';
 import 'package:flutter/material.dart';
 
-/// [SignInViewModel], [SignInView]
+/// [OfferedShiftsViewModel], [OfferedShiftsView]
 // ignore: must_be_immutable
 class OfferedShiftsWindow extends BaseStatefulWidget {
   OfferedShiftsWindow({Key? key, WindowConfig? windowConfig})

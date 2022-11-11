@@ -8,6 +8,8 @@ class OfferedShiftsDetailsView
     extends BaseState<OfferedShiftsDetailsViewModel> {
   @override
   Widget buildView() {
-    return Card();
+    return const Card(
+      child: Text("OfferedShiftsDetailsView", style: TextStyle(fontSize: 25)),
+    );
   }
 }
