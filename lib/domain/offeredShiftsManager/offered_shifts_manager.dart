@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:exercice/data/bindingModels/offeredShift/offered_shift_binding_model.dart';
-import 'package:exercice/data/bindingModels/offeredShift/offered_shift_state.dart';
+import 'package:exercice/data/bindingModels/offeredShift/shift_binding_model.dart';
+import 'package:exercice/data/bindingModels/offeredShift/shift_state.dart';
 import 'package:exercice/data/parserModels/offeredShiftModels/Data.dart';
 import 'package:exercice/data/parserModels/offeredShiftModels/OfferedShiftsResponse.dart';
 import 'package:exercice/domain/offeredShiftsManager/offered_shifts_api.dart';
@@ -11,26 +11,24 @@ import 'package:flutter/services.dart';
 class OfferedShiftsManager implements OfferedShiftsApi {
   /// [OfferedShiftsApi.fetchData]
   @override
-  fetchData(
-      Function(List<OfferedShiftBindingModel>) itemsFetchedSuccessCallback,
+  fetchData(Function(List<ShiftBindingModel>) itemsFetchedSuccessCallback,
       Function itemsFetchedFailureCallback) {
-    List<OfferedShiftBindingModel> offeredShiftBindingModels =
+    List<ShiftBindingModel> offeredShiftBindingModels =
         List.empty(growable: true);
     rootBundle.loadString('assets/json/offered_shifts.json').then((jsonStr) {
       Map<String, dynamic> offeredShiftsMap = jsonDecode(jsonStr);
       OfferedShiftsResponse model =
           OfferedShiftsResponse.fromJson(offeredShiftsMap);
       model.data?.forEach((currentData) {
-        OfferedShiftBindingModel index =
-            _createOfferedShiftBindingModel(currentData);
+        ShiftBindingModel index = _createOfferedShiftBindingModel(currentData);
         offeredShiftBindingModels.add(index);
       });
       itemsFetchedSuccessCallback(offeredShiftBindingModels);
     }).catchError(itemsFetchedFailureCallback);
   }
 
-  OfferedShiftBindingModel _createOfferedShiftBindingModel(Data data) {
-    OfferedShiftBindingModel model = OfferedShiftBindingModel();
+  ShiftBindingModel _createOfferedShiftBindingModel(Data data) {
+    ShiftBindingModel model = ShiftBindingModel();
     model.companyName = data.company ?? AppConstants.EMPTY;
     model.postName = data.postName ?? AppConstants.EMPTY;
     model.buyPrice = data.buyPrice ?? AppConstants.EMPTY;
@@ -39,7 +37,7 @@ class OfferedShiftsManager implements OfferedShiftsApi {
     model.setEndDate(data.endAt);
     model.setStartTime(data.startAt);
     model.setEndTime(data.endAt);
-    model.state = OfferedShiftState.upcoming;
+    model.state = ShiftState.upcoming;
     return model;
   }
 }
