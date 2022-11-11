@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:exercice/data/bindingModels/offeredShift/offered_shift_state.dart';
 import 'package:exercice/presentation/common/utils/resource/AppConstants.dart';
 
@@ -12,16 +13,53 @@ class OfferedShiftBindingModel {
   String endTime = AppConstants.EMPTY;
   OfferedShiftState state = OfferedShiftState.upcoming;
 
-  OfferedShiftBindingModel(
-      {this.companyName = AppConstants.EMPTY,
-      this.postName = AppConstants.EMPTY,
-      this.buyPrice = AppConstants.EMPTY,
-      this.bonusPrice = 0.0,
-      this.startDate = AppConstants.EMPTY,
-      this.endDate = AppConstants.EMPTY,
-      this.startTime = AppConstants.EMPTY,
-      this.endTime = AppConstants.EMPTY,
-      this.state = OfferedShiftState.upcoming});
+  OfferedShiftBindingModel({this.companyName = AppConstants.EMPTY,
+    this.postName = AppConstants.EMPTY,
+    this.buyPrice = AppConstants.EMPTY,
+    this.bonusPrice = 0.0,
+    this.startDate = AppConstants.EMPTY,
+    this.endDate = AppConstants.EMPTY,
+    this.startTime = AppConstants.EMPTY,
+    this.endTime = AppConstants.EMPTY,
+    this.state = OfferedShiftState.upcoming});
+
+  void setStartTime(String? startDate) {
+    if (startDate != null) {
+      final dt = DateFormat(AppConstants.responseDateFormat).parse(startDate);
+      startTime = DateFormat(AppConstants.bindingStartEndTimeFormat).format(dt);
+    } else {
+      startTime = AppConstants.EMPTY;
+    }
+  }
+
+  void setEndTime(String? endDate) {
+    if (endDate != null) {
+      final dt = DateFormat(AppConstants.responseDateFormat).parse(endDate);
+      endTime = DateFormat(AppConstants.bindingStartEndTimeFormat).format(dt);
+    } else {
+      endTime = AppConstants.EMPTY;
+    }
+  }
+
+  void setStartDate(String? startDate) {
+    if (startDate != null) {
+      final dt = DateFormat(AppConstants.responseDateFormat).parse(startDate);
+      this.startDate =
+          DateFormat(AppConstants.bindingStartEndDateFormat).format(dt);
+    } else {
+      this.startDate = AppConstants.EMPTY;
+    }
+  }
+
+  void setEndDate(String? endDate) {
+    if (endDate != null) {
+      final dt = DateFormat(AppConstants.responseDateFormat).parse(endDate);
+      this.endDate =
+          DateFormat(AppConstants.bindingStartEndDateFormat).format(dt);
+    } else {
+      this.endDate = AppConstants.EMPTY;
+    }
+  }
 
   @override
   String toString() {

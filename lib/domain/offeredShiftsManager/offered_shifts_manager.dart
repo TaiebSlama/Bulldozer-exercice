@@ -35,10 +35,10 @@ class OfferedShiftsManager implements OfferedShiftsApi {
     model.postName = data.postName ?? AppConstants.EMPTY;
     model.buyPrice = data.buyPrice ?? AppConstants.EMPTY;
     model.bonusPrice = (data.bonus ?? 0.0).toDouble();
-    model.startDate = data.startAt ?? AppConstants.EMPTY;
-    model.endDate = data.endAt ?? AppConstants.EMPTY;
-    model.startTime = data.startAt ?? AppConstants.EMPTY;
-    model.endTime = data.endAt ?? AppConstants.EMPTY;
+    model.setStartDate(data.startAt);
+    model.setEndDate(data.endAt);
+    model.setStartTime(data.startAt);
+    model.setEndTime(data.endAt);
     model.state = OfferedShiftState.upcoming;
     return model;
   }
