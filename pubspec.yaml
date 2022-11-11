@@ -32,6 +32,7 @@ flutter:
     - assets/icons/
     - assets/fonts/
     - assets/translations/
+    - assets/json/
 
   fonts:
     - family: PTSerif-Bold

@@ -1,0 +1,40 @@
+import 'Data.dart';
+import 'Links.dart';
+import 'Meta.dart';
+
+class OfferedShiftsResponse {
+  OfferedShiftsResponse({
+    this.data,
+    this.links,
+    this.meta,
+  });
+
+  OfferedShiftsResponse.fromJson(dynamic json) {
+    if (json['data'] != null) {
+      data = [];
+      json['data'].forEach((v) {
+        data?.add(Data.fromJson(v));
+      });
+    }
+    links = json['links'] != null ? Links.fromJson(json['links']) : null;
+    meta = json['meta'] != null ? Meta.fromJson(json['meta']) : null;
+  }
+
+  List<Data>? data;
+  Links? links;
+  Meta? meta;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    if (data != null) {
+      map['data'] = data?.map((v) => v.toJson()).toList();
+    }
+    if (links != null) {
+      map['links'] = links?.toJson();
+    }
+    if (meta != null) {
+      map['meta'] = meta?.toJson();
+    }
+    return map;
+  }
+}
