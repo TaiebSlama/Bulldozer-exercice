@@ -21,4 +21,7 @@ abstract class BaseViewModel {
     view.navigateBack();
   }
 
+  void reload(Function method) {
+    view.reload(method);
+  }
 }

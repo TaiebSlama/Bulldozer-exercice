@@ -25,6 +25,12 @@ abstract class BaseState<VM extends BaseViewModel>
     Navigator.of(context).pop();
   }
 
+  void reload(Function method) {
+    setState(() {
+      method();
+    });
+  }
+
   void showLoaderDialog() async {
     await showDialog(
         barrierDismissible: false,
