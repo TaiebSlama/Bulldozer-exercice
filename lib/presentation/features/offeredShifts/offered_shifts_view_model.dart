@@ -1,6 +1,7 @@
 import 'package:exercice/domain/offeredShiftsManager/offered_shifts_api.dart';
 import 'package:exercice/presentation/app/exercise_app.dart';
 import 'package:exercice/presentation/common/base/viewModel/base_view_model.dart';
+import 'package:exercice/presentation/common/utils/resource/AppLogger.dart';
 import 'package:exercice/presentation/features/offeredShifts/offered_shifts_binding_model.dart';
 import 'package:exercice/presentation/features/offeredShifts/offered_shifts_view.dart';
 import 'package:exercice/presentation/features/offeredShifts/offered_shifts_window.dart';
@@ -14,6 +15,12 @@ class OfferedShiftsViewModel extends BaseViewModel {
 
   @override
   Future<void> setUpDataBinding() async {
-    offeredShiftsManager.fetchData();
+    offeredShiftsManager.fetchData((offeredShiftBindingModels) {
+      for (var element in offeredShiftBindingModels) {
+        AppLogger.log("offeredShiftBindingModels", element.toString());
+      }
+    }, () {
+      AppLogger.log("offeredShiftBindingModels", "error");
+    });
   }
 }
