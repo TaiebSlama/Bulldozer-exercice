@@ -1,0 +1,2 @@
+/// [OfferView]
+class OfferedShiftsDetailsBindingModel {}

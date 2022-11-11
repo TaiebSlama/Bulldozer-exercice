@@ -74,6 +74,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.4"
+  koin:
+    dependency: "direct main"
+    description:
+      name: koin
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.14.2"
+  kt_dart:
+    dependency: transitive
+    description:
+      name: kt_dart
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.8.0"
   lints:
     dependency: transitive
     description:
