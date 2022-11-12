@@ -24,7 +24,7 @@ class ShiftBindingModel {
       this.endTime = AppConstants.EMPTY,
       this.state = ShiftState.upcoming});
 
-  void setStartTime(String? startDate) {
+  void setStartTimeFormat(String? startDate) {
     if (startDate != null) {
       final dt = DateFormat(AppConstants.responseDateFormat).parse(startDate);
       startTime = DateFormat(AppConstants.bindingStartEndTimeFormat).format(dt);
@@ -33,7 +33,7 @@ class ShiftBindingModel {
     }
   }
 
-  void setEndTime(String? endDate) {
+  void setEndTimeFormat(String? endDate) {
     if (endDate != null) {
       final dt = DateFormat(AppConstants.responseDateFormat).parse(endDate);
       endTime = DateFormat(AppConstants.bindingStartEndTimeFormat).format(dt);
@@ -42,7 +42,7 @@ class ShiftBindingModel {
     }
   }
 
-  void setStartDate(String? startDate) {
+  void setStartDateFormat(String? startDate) {
     if (startDate != null) {
       final dt = DateFormat(AppConstants.responseDateFormat).parse(startDate);
       this.startDate =
@@ -52,7 +52,7 @@ class ShiftBindingModel {
     }
   }
 
-  void setEndDate(String? endDate) {
+  void setEndDateFormat(String? endDate) {
     if (endDate != null) {
       final dt = DateFormat(AppConstants.responseDateFormat).parse(endDate);
       this.endDate =

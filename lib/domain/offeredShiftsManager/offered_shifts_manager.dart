@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:exercice/data/bindingModels/offeredShift/shift_binding_model.dart';
 import 'package:exercice/data/bindingModels/offeredShift/shift_state.dart';
-import 'package:exercice/data/parserModels/offeredShiftModels/Data.dart';
-import 'package:exercice/data/parserModels/offeredShiftModels/OfferedShiftsResponse.dart';
+import 'package:exercice/data/parserModels/offeredShiftModels/data.dart';
+import 'package:exercice/data/parserModels/offeredShiftModels/offered_shifts_response.dart';
 import 'package:exercice/domain/offeredShiftsManager/offered_shifts_api.dart';
 import 'package:exercice/presentation/common/utils/resource/AppConstants.dart';
 import 'package:flutter/services.dart';
@@ -33,10 +33,10 @@ class OfferedShiftsManager implements OfferedShiftsApi {
     model.postName = data.postName ?? AppConstants.EMPTY;
     model.buyPrice = data.buyPrice ?? AppConstants.EMPTY;
     model.bonusPrice = (data.bonus ?? 0.0).toDouble();
-    model.setStartDate(data.startAt);
-    model.setEndDate(data.endAt);
-    model.setStartTime(data.startAt);
-    model.setEndTime(data.endAt);
+    model.setStartDateFormat(data.startAt);
+    model.setEndDateFormat(data.endAt);
+    model.setStartTimeFormat(data.startAt);
+    model.setEndTimeFormat(data.endAt);
     model.state = ShiftState.upcoming;
     return model;
   }

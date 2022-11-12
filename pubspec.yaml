@@ -17,6 +17,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   koin: ^0.14.2
   easy_localization: ^3.0.1
+  sprintf: ^7.0.0
 
 dev_dependencies:
   flutter_test:
@@ -47,3 +48,15 @@ flutter:
     - family: PTSerif-Regular
       fonts:
         - asset: assets/fonts/PTSerif-Regular.ttf
+    - family: Roboto-Bold
+      fonts:
+        - asset: assets/fonts/Roboto-Bold.ttf
+    - family: Roboto-Light
+      fonts:
+        - asset: assets/fonts/Roboto-Light.ttf
+    - family: Roboto-Medium
+      fonts:
+        - asset: assets/fonts/Roboto-Medium.ttf
+    - family: Roboto-Regular
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf

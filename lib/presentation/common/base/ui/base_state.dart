@@ -59,13 +59,11 @@ abstract class BaseState<VM extends BaseViewModel>
             child: Scaffold(
                 body: SafeArea(
                     child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Center(
-                child: SingleChildScrollView(
-                  child: Stack(children: [buildView()]),
-                ),
-              ),
-            )))));
+                        padding: const EdgeInsets.all(16.0),
+                        child: Center(
+                            child: SingleChildScrollView(
+                          child: Stack(children: [buildView()]),
+                        )))))));
   }
 
   Widget buildView();

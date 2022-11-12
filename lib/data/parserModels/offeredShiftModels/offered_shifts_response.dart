@@ -1,6 +1,6 @@
-import 'Data.dart';
-import 'Links.dart';
-import 'Meta.dart';
+import 'data.dart';
+import 'links.dart';
+import 'meta.dart';
 
 class OfferedShiftsResponse {
   OfferedShiftsResponse({

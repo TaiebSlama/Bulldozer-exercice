@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:exercice/presentation/common/utils/resource/app_colors.dart';
 import 'package:exercice/presentation/features/offeredShifts/offered_shifts_window.dart';
 import 'package:flutter/material.dart';
 import 'package:koin/koin.dart';
@@ -40,6 +41,7 @@ class ExerciseApp extends StatelessWidget {
         supportedLocales: context.supportedLocales,
         locale: context.locale,
         navigatorKey: navigatorKey,
+        theme: ThemeData(scaffoldBackgroundColor: AppColors.gallery),
         home: OfferedShiftsWindow.instance.specifyUseCase());
   }
 }
