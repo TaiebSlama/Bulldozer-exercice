@@ -14,69 +14,75 @@ class OfferedShiftsItemView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-        elevation: 4,
-        color: AppColors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.0),
-        ),
-        child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(offeredShiftModel.companyName,
-                  style: const TextStyle(
-                      color: AppColors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.normal,
-                      fontFamily: AppFont.serifRegular)),
-              const Padding(padding: EdgeInsets.only(top: 5)),
-              Text(offeredShiftModel.startDate,
-                  style: const TextStyle(
-                      color: AppColors.black,
-                      fontSize: 10,
-                      fontWeight: FontWeight.normal,
-                      fontFamily: AppFont.robotoMedium)),
-              const Padding(padding: EdgeInsets.only(top: 5)),
-              Row(children: [
-                Container(
-                    padding: const EdgeInsets.only(
-                        top: 5, bottom: 5, right: 8, left: 8),
-                    decoration: BoxDecoration(
-                        color: AppColors.gallery,
-                        borderRadius: BorderRadius.circular(17)),
-                    child: Text(offeredShiftModel.postName,
+    return GestureDetector(
+      onTap: () {
+        viewModel.handleOfferedShiftSelected(offeredShiftModel);
+      },
+      child: Card(
+          elevation: 4,
+          color: AppColors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+          child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(offeredShiftModel.companyName,
                         style: const TextStyle(
-                            color: AppColors.dustyGrey,
+                            color: AppColors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal,
+                            fontFamily: AppFont.serifRegular)),
+                    const Padding(padding: EdgeInsets.only(top: 5)),
+                    Text(offeredShiftModel.startDate,
+                        style: const TextStyle(
+                            color: AppColors.black,
                             fontSize: 10,
                             fontWeight: FontWeight.normal,
-                            fontFamily: AppFont.robotoMedium))),
-                const Padding(padding: EdgeInsets.only(left: 2)),
-                Text(_preparePriceFormat(),
-                    style: const TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: AppFont.robotoMedium,
-                        color: AppColors.dustyGrey)),
-                const Padding(padding: EdgeInsets.only(left: 2)),
-                Text(_prepareBonusFormat(),
-                    style: const TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: AppFont.robotoMedium,
-                        color: AppColors.emerald)),
-                Expanded(
-                    child: Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(_prepareDurationFormat(),
-                      style: const TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: AppFont.robotoMedium,
-                          color: AppColors.dustyGrey)),
-                ))
-              ])
-            ])));
+                            fontFamily: AppFont.robotoMedium)),
+                    const Padding(padding: EdgeInsets.only(top: 5)),
+                    Row(children: [
+                      Container(
+                          padding: const EdgeInsets.only(
+                              top: 5, bottom: 5, right: 8, left: 8),
+                          decoration: BoxDecoration(
+                              color: AppColors.gallery,
+                              borderRadius: BorderRadius.circular(17)),
+                          child: Text(offeredShiftModel.postName,
+                              style: const TextStyle(
+                                  color: AppColors.dustyGrey,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.normal,
+                                  fontFamily: AppFont.robotoMedium))),
+                      const Padding(padding: EdgeInsets.only(left: 2)),
+                      Text(_preparePriceFormat(),
+                          style: const TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: AppFont.robotoMedium,
+                              color: AppColors.dustyGrey)),
+                      const Padding(padding: EdgeInsets.only(left: 2)),
+                      Text(_prepareBonusFormat(),
+                          style: const TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: AppFont.robotoMedium,
+                              color: AppColors.emerald)),
+                      Expanded(
+                          child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Text(_prepareDurationFormat(),
+                            style: const TextStyle(
+                                fontSize: 10,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: AppFont.robotoMedium,
+                                color: AppColors.dustyGrey)),
+                      ))
+                    ])
+                  ]))),
+    );
   }
 
   String _preparePriceFormat() {

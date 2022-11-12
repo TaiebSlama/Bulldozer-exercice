@@ -9,6 +9,12 @@ import 'package:exercice/presentation/common/utils/resource/AppConstants.dart';
 import 'package:flutter/services.dart';
 
 class OfferedShiftsManager implements OfferedShiftsApi {
+  @override
+  OfferedShiftsResponse offeredShiftsResponse = OfferedShiftsResponse();
+
+  @override
+  ShiftBindingModel shiftBindingModelSelected = ShiftBindingModel();
+
   /// [OfferedShiftsApi.fetchData]
   @override
   fetchData(Function(List<ShiftBindingModel>) itemsFetchedSuccessCallback,
@@ -17,9 +23,9 @@ class OfferedShiftsManager implements OfferedShiftsApi {
         List.empty(growable: true);
     rootBundle.loadString('assets/json/offered_shifts.json').then((jsonStr) {
       Map<String, dynamic> offeredShiftsMap = jsonDecode(jsonStr);
-      OfferedShiftsResponse model =
-          OfferedShiftsResponse.fromJson(offeredShiftsMap);
-      model.data?.forEach((currentData) {
+      offeredShiftsResponse = OfferedShiftsResponse.fromJson(offeredShiftsMap);
+
+      offeredShiftsResponse.data?.forEach((currentData) {
         ShiftBindingModel index = _createOfferedShiftBindingModel(currentData);
         offeredShiftBindingModels.add(index);
       });
@@ -29,6 +35,7 @@ class OfferedShiftsManager implements OfferedShiftsApi {
 
   ShiftBindingModel _createOfferedShiftBindingModel(Data data) {
     ShiftBindingModel model = ShiftBindingModel();
+    model.id = data.id ?? -1;
     model.companyName = data.company ?? AppConstants.EMPTY;
     model.postName = data.postName ?? AppConstants.EMPTY;
     model.buyPrice = data.buyPrice ?? AppConstants.EMPTY;

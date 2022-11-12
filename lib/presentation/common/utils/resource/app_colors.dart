@@ -8,4 +8,6 @@ class AppColors {
   static const dustyGrey = Color(0xff9a9a9a);
   static const emerald = Color(0xff5ed369);
   static const gallery = Color(0xffefefef);
+  static const nevada = Color(0x806d7278);
+  static const shakespeare = Color(0xFF53C5CD);
 }

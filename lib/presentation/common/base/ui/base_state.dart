@@ -13,7 +13,9 @@ abstract class BaseState<VM extends BaseViewModel>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      viewModel.setUpDataBinding();
+      setState(() {
+        viewModel.setUpDataBinding();
+      });
     });
   }
 
@@ -57,13 +59,13 @@ abstract class BaseState<VM extends BaseViewModel>
         child: WillPopScope(
             onWillPop: null,
             child: Scaffold(
+                backgroundColor: configAppBackground(),
                 body: SafeArea(
                     child: Padding(
                         padding: const EdgeInsets.all(16.0),
-                        child: Center(
-                            child: SingleChildScrollView(
+                        child: SingleChildScrollView(
                           child: Stack(children: [buildView()]),
-                        )))))));
+                        ))))));
   }
 
   Widget buildView();
@@ -80,6 +82,10 @@ abstract class BaseState<VM extends BaseViewModel>
         viewModel.handleRefreshWhenGoBack();
       },
     );
+  }
+
+  Color? configAppBackground() {
+    return null;
   }
 
   void finishAndNavigateTo(Widget destination) async {

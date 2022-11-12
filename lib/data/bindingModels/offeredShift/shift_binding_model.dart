@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:exercice/data/bindingModels/offeredShift/shift_state.dart';
 import 'package:exercice/presentation/common/utils/resource/AppConstants.dart';
+import 'package:sprintf/sprintf.dart';
 
 class ShiftBindingModel {
+  int id = -1;
   String companyName = AppConstants.EMPTY;
   String postName = AppConstants.EMPTY;
   String buyPrice = AppConstants.EMPTY;
@@ -14,7 +16,8 @@ class ShiftBindingModel {
   ShiftState state = ShiftState.upcoming;
 
   ShiftBindingModel(
-      {this.companyName = AppConstants.EMPTY,
+      {this.id = -1,
+      this.companyName = AppConstants.EMPTY,
       this.postName = AppConstants.EMPTY,
       this.buyPrice = AppConstants.EMPTY,
       this.bonusPrice = 0.0,
@@ -60,6 +63,21 @@ class ShiftBindingModel {
     } else {
       this.endDate = AppConstants.EMPTY;
     }
+  }
+
+  String preparePriceFormat() {
+    String priceFormat = sprintf("%s / H", [buyPrice]);
+    return priceFormat;
+  }
+
+  String prepareBonusFormat() {
+    String bonusFormat = sprintf("+ %s / H", [bonusPrice]);
+    return bonusFormat;
+  }
+
+  String prepareDurationFormat() {
+    String durationFormat = sprintf("%s - %s", [startTime, endTime]);
+    return durationFormat;
   }
 
   @override
